@@ -4,7 +4,6 @@ import com.spring.SpringExample.entity.Student;
 import com.spring.SpringExample.repository.StudentRepository;
 import com.spring.SpringExample.repository.interfaces.IStudentRepository;
 import com.spring.SpringExample.services.interfaces.IStudentService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,34 +11,34 @@ import java.util.List;
 @Service //аннотация сообщаем спрингу что это сервис
 public class StudentService implements IStudentService {
 
-    private final IStudentRepository istudentRepository;
+    private final StudentRepository studentRepository;
 
-    public StudentService(IStudentRepository istudentRepository) {
-        this.istudentRepository = istudentRepository;
+    public StudentService(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
     }
 
-
+    @Override
     public List<Student> findAllStudent(){
-        return List.of();
+        return studentRepository.findAllStudent();
     }
 
     @Override
     public Student saveStudent(Student student) {
-        return null;
+        return studentRepository.saveStudent(student);
     }
 
     @Override
     public Student findByEmail(String email) {
-        return null;
+        return studentRepository.findByEmail(email);
     }
 
     @Override
     public Student updateStudent(Student student) {
-        return null;
+        return studentRepository.updateStudent(student);
     }
 
     @Override
     public void deleteStudent(String email) {
-
+        studentRepository.deleteStudent(email);
     }
 }
